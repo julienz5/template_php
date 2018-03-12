@@ -1,0 +1,197 @@
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>AvisPlus++</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    var review_link = "https://goo.gl/5UDbfH";
+    $("#star3_link").attr("href", review_link);
+    $("#star4_link").attr("href", review_link);
+    $("#star5_link").attr("href", review_link);
+
+    var clicked;
+    var pr = getParameterByName("pr");
+    var cab = getParameterByName("cab");
+    var id_wf = getParameterByName("id_wf");
+
+    $("#text_praticien").text(pr);
+    if (cab == null) {
+    }
+    else{
+        $("#title_cab").text("Cabinet dentaire " + cab);
+    }
+    $("#button_validate").hide();
+    $("#validated").hide();
+
+    $("#star1").mouseenter(function(){
+        $(this).attr("class", "glyphicon glyphicon-star");
+    });
+    $("#star1").mouseleave(function(){
+        if(clicked == null){
+            $(this).attr("class", "glyphicon glyphicon-star-empty");
+        }
+    });
+
+    $("#star2").mouseenter(function(){
+        $(this).attr("class", "glyphicon glyphicon-star");
+        $("#star1").attr("class", "glyphicon glyphicon-star");
+    });
+    $("#star2").mouseleave(function(){
+        console.log(clicked);
+        if(clicked == 1 || clicked == null){
+            $(this).attr("class", "glyphicon glyphicon-star-empty");
+        }
+        if(clicked == null){
+            $("#star1").attr("class", "glyphicon glyphicon-star-empty");
+        }
+    });    
+
+    $("#star3").mouseenter(function(){
+        $(this).attr("class", "glyphicon glyphicon-star");
+        $("#star1").attr("class", "glyphicon glyphicon-star");
+        $("#star2").attr("class", "glyphicon glyphicon-star");
+    });
+    $("#star3").mouseleave(function(){
+        $(this).attr("class", "glyphicon glyphicon-star-empty");
+        if(clicked == null){
+            $("#star1").attr("class", "glyphicon glyphicon-star-empty");
+        }
+        if(clicked == 1 || clicked == null){
+            $("#star2").attr("class", "glyphicon glyphicon-star-empty");
+        }
+    });    
+
+    $("#star4").mouseenter(function(){
+        $(this).attr("class", "glyphicon glyphicon-star");
+        $("#star1").attr("class", "glyphicon glyphicon-star");
+        $("#star2").attr("class", "glyphicon glyphicon-star");
+        $("#star3").attr("class", "glyphicon glyphicon-star");
+    });
+    $("#star4").mouseleave(function(){
+        $(this).attr("class", "glyphicon glyphicon-star-empty");
+        if(clicked == null){
+            $("#star1").attr("class", "glyphicon glyphicon-star-empty");
+        }
+        if(clicked == 1 || clicked == null){
+            $("#star2").attr("class", "glyphicon glyphicon-star-empty");
+        }
+        $("#star3").attr("class", "glyphicon glyphicon-star-empty");
+    });
+
+    $("#star5").mouseenter(function(){
+        $(this).attr("class", "glyphicon glyphicon-star");
+        $("#star1").attr("class", "glyphicon glyphicon-star");
+        $("#star2").attr("class", "glyphicon glyphicon-star");
+        $("#star3").attr("class", "glyphicon glyphicon-star");
+        $("#star4").attr("class", "glyphicon glyphicon-star");
+    });
+    $("#star5").mouseleave(function(){
+        $(this).attr("class", "glyphicon glyphicon-star-empty");
+        if(clicked == null){
+            $("#star1").attr("class", "glyphicon glyphicon-star-empty");
+        }
+        if(clicked == 1 || clicked == null){
+            $("#star2").attr("class", "glyphicon glyphicon-star-empty");
+        }
+        $("#star3").attr("class", "glyphicon glyphicon-star-empty");
+        $("#star4").attr("class", "glyphicon glyphicon-star-empty");
+    });
+
+    $("#star1").click(function(){
+        clicked = 1;
+        $(this).attr("class", "glyphicon glyphicon-star");
+        $("#star2").attr("class", "glyphicon glyphicon-star-empty");
+        $("#button_validate").show();
+    });
+    $("#star2").click(function(){
+        clicked = 2;
+        $("#star1").attr("class", "glyphicon glyphicon-star");
+        $(this).attr("class", "glyphicon glyphicon-star");
+        $("#button_validate").show();
+    });
+    
+    $("#button_validate").click(function(){
+        $("#validated").show();
+        $("#stars").hide();
+        $("#button_validate").hide();
+    });
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+
+
+});
+</script>
+
+
+</head>
+<body>
+<table style=" width: 100% !important; height: 100%; background: #f8f8f8; font-family: sans-serif">
+    <tr>
+        <td style = "display: block !important; clear: both !important; margin: 0 auto !important; max-width: 780px !important;">
+            <!-- Message start -->
+            <table style="width: 100% !important; border-collapse: collapse;">
+                <tr>
+                    <td align="center" style ="padding: 40px 0;background-color: black; color: white;">
+                        <h1 id="title_cab" style=" margin-bottom: 20px; line-height: 1.25;font-size: 22px; margin: 0 auto !important; max-width: 90%; text-transform: uppercase;">Cabinet Dentaire</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background: white; padding: 30px 35px; color: #555555;">
+                        <p style = "font-size: 14px; font-weight: normal; margin-bottom: 20px; line-height: 1.8;">Vous avez été soigné par notre praticien <span id="text_praticien">  </span>. Dans une optique d'amélioration continue de la qualité de nos prestations, votre avis nous intérresse. 
+                            <br>
+                        Merci de donner une note au cabinet :</p>
+                        <table style="width: 100% !important; border-collapse: collapse;">
+                            <tr>
+                                <td id="stars" align= center>
+                                    <a style="color: black" href="javascript:void(0)"><i id="star1" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
+                                    <a style="color: black" href="javascript:void(0)"><i id="star2" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
+                                    <a id="star3_link" style="color: black" href= "javascript:void(0)"><i id="star3" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
+                                    <a id="star4_link" style="color: black" href="javascript:void(0)"><i id="star4" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
+                                    <a id="star5_link" style="color: black" href="javascript:void(0)"><i id="star5" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style ="padding-top: 20px" align = center>
+                                    <button id="button_validate">Soumettre</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="validated" style ="padding-top: 20px" align = center>
+                                    <p style="color: #968896">Merci, votre avis a bien été validé.</p>
+                                </td>
+                            </tr>                            
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style = "display: block !important; clear: both !important; margin: 0 auto !important; max-width: 580px !important;"">
+
+            <table style=" width: 100% !important; border-collapse: collapse;">
+                <tr>
+                    <td style="background: none;" align="center">
+                        <p style =" margin-bottom: 0; color: #888; text-align: center; font-size: 14px;">Si vous souhaitez contacter le cabinet, merci de le joindre directectement par téléphone ou via son site Internet.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
