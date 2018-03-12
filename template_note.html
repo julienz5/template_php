@@ -10,15 +10,16 @@
 
 $(document).ready(function(){
 
-    var review_link = "https://goo.gl/5UDbfH";
+
+    var clicked;
+    var review_link = getParameterByName("rlink");
+    var pr = getParameterByName("pr");
+    var cab = getParameterByName("cab");
+    var id_wf = getParameterByName("idwf");
+
     $("#star3_link").attr("href", review_link);
     $("#star4_link").attr("href", review_link);
     $("#star5_link").attr("href", review_link);
-
-    var clicked;
-    var pr = getParameterByName("pr");
-    var cab = getParameterByName("cab");
-    var id_wf = getParameterByName("id_wf");
 
     $("#text_praticien").text(pr);
     if (cab == null) {
