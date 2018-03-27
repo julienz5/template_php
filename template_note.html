@@ -27,6 +27,7 @@ $(document).ready(function(){
     else{
         $("#title_cab").text("Cabinet dentaire " + cab);
     }
+    $("#input_avis").hide();
     $("#button_validate").hide();
     $("#validated").hide();
 
@@ -109,18 +110,21 @@ $(document).ready(function(){
         $(this).attr("class", "glyphicon glyphicon-star");
         $("#star2").attr("class", "glyphicon glyphicon-star-empty");
         $("#button_validate").show();
+        $("#input_avis").show();
     });
     $("#star2").click(function(){
         clicked = 2;
         $("#star1").attr("class", "glyphicon glyphicon-star");
         $(this).attr("class", "glyphicon glyphicon-star");
         $("#button_validate").show();
+        $("#input_avis").show();
     });
     
     $("#button_validate").click(function(){
         $("#validated").show();
         $("#stars").hide();
         $("#button_validate").hide();
+        $("#input_avis").hide();
     });
 
 function getParameterByName(name, url) {
@@ -162,6 +166,12 @@ function getParameterByName(name, url) {
                                     <a id="star3_link" style="color: black" href= "javascript:void(0)"><i id="star3" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
                                     <a id="star4_link" style="color: black" href="javascript:void(0)"><i id="star4" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
                                     <a id="star5_link" style="color: black" href="javascript:void(0)"><i id="star5" style = "font-size: 40px" class="glyphicon glyphicon-star-empty"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style ="padding-top: 20px" align = center>
+                                    <textarea type="textbox" id="input_avis" placeholder="Veuillez expliquer votre note (facultatif)" style="font-size: 13px; font-style: italic; width: 250px; height: 80px">
+                                    </textarea>
                                 </td>
                             </tr>
                             <tr>
